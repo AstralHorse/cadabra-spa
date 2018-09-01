@@ -5,7 +5,7 @@
     "author": "SoftDrive",
     "private": true,
     "scripts": {
-        "start": "node dist/server",
+        "start": "node dist/server.js",
         "heroku-postbuild": "webpack -p",
         "server":"node dist/server",
         "startdev": "webpack-dev-server --hot --compress --host 0.0.0.0 --history-api-fallback --content-base public",
