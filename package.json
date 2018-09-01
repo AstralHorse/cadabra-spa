@@ -9,7 +9,7 @@
         "heroku-postbuild": "webpack -p",
         "server":"node dist/server",
         "startdev": "webpack-dev-server --hot --compress --host 0.0.0.0 --history-api-fallback --content-base public",
-        "build": "webpack -p",
+        "build": "tsc",
         "test": "node dist/api/tests"
     },
     "dependencies": {
