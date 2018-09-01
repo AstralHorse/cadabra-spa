@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
         "start": "webpack-dev-server --hot --compress --host 0.0.0.0 --history-api-fallback --content-base public",
-        "webpack": "webpack",
+        "build": "webpack",
         "test": "node dist/api/tests"
     },
     "dependencies": {
