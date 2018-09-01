@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "declaration": false,
+        "experimentalDecorators": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": false,
+        "pretty": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "lib": [ "es2017", "dom" ],
+        "jsx": "react",
+        "baseUrl": "src",
+        "paths": {
+            "@/*": [ "./*" ]
+        }
+    },
+    "include": [
+        "typings/**/*.ts",
+        "typings/**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": [
+        "any_fileglob_to_exclude.ts"
+    ]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="24px" viewBox="0 0 29 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>43F23FDA-AA76-4C06-9832-B343D361C5BB</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <polygon id="path-1" points="7.54594155 7.04594155 23.5459415 7.04594155 29.5459415 9.72782278 23.5459415 12.0459415 7.54594155 12.0459415"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NoteApp1" transform="translate(-482.000000, -84.000000)">
+            <g id="Tool-bar" transform="translate(0.000000, 64.000000)">
+                <g id="New" transform="translate(482.000000, 20.000000)">
+                    <rect id="Rectangle-11" stroke="#6C757C" stroke-width="1" x="0.5" y="0.5" width="23" height="23" rx="3"></rect>
+                    <g id="Rectangle-2" transform="translate(18.545942, 9.545942) rotate(135.000000) translate(-18.545942, -9.545942) ">
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <path stroke="#6C757C" stroke-width="1" d="M8.04594155,7.54594155 L8.04594155,11.5459415 L23.4527114,11.5459415 L28.2455079,9.69422961 L23.4392815,7.54594155 L8.04594155,7.54594155 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
