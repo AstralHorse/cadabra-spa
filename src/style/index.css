@@ -50,6 +50,8 @@ body{
 section{
 display: block;
 }
+
+
 /*Header main*/
 .header {
     display: flex;
@@ -67,6 +69,7 @@ display: block;
     width: 90%;
 }
 .header .user{
+    width: 100px;
     cursor: pointer;
     float: right;
     text-transform: capitalize;
@@ -209,6 +212,7 @@ display: flex;
     border-bottom: 1px solid #cecece;
 }
 .left_note .nav_note.archived {
+    background: #e6e6e6;
     text-decoration: line-through;
 }
 .left_note .nav_note.active{
@@ -464,5 +468,10 @@ input[type='checkbox']:checked:after {
         width: 100%;
         left: 0;
         padding: 5px;
+    }
+    .react-calendar {
+        position: relative;
+        top: 135px;
+        z-index: 5;
     }
 }

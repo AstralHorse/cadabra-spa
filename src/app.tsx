@@ -35,7 +35,7 @@ export default class App extends React.Component<{
                     <Route exact path={routes.registration} component={pages.Registration} />
                     <Route exact path={routes.root} component={pages.Main} />
                     <Route exact path={routes.main} component={pages.Main} />
-
+                    <Route exact path={'/bar'} component={pages.Bar} />
                 </div>
             </Router>
         )

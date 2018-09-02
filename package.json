@@ -7,7 +7,7 @@
     "scripts": {
         "start": "node dist/server",
         "heroku-postbuild": "tsc; webpack -p",
-        "server":"node dist/server",
+        "server": "node dist/server",
         "startdev": "webpack-dev-server --hot --compress --host 0.0.0.0 --history-api-fallback --content-base public",
         "build": "tsc",
         "test": "node dist/api/tests"
@@ -20,6 +20,8 @@
         "react": "^16.3.2",
         "react-calendar": "^2.17.1",
         "react-dom": "^16.3.2",
+        "react-drag-sortable": "^1.0.6",
+        "react-loading": "^2.0.3",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2"
     },
