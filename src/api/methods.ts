@@ -46,7 +46,7 @@ function createHeaderUser(user: In.User) {
 
 export async function signIn(param: Out.SignIn) {
     const formBody = createFormBody(param);
-    let rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/auth/sign_in', {
+    const rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/auth/sign_in', {
         method: 'POST',
         headers: headers,
         body: formBody,
@@ -57,7 +57,7 @@ export async function signIn(param: Out.SignIn) {
 
 export async function auth(param: Out.Auth) {
     const formBody = createFormBody(param);
-    let rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/auth', {
+    const rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/auth', {
         method: 'POST',
         headers: headers,
         body: formBody,
@@ -81,7 +81,7 @@ export namespace note {
 
 
     export async function getById(user: In.User, id: string) {
-        let rv = await fetch(`https://cadabra-note-app.herokuapp.com/api/v1/notes/${id}`, {
+        const rv = await fetch(`https://cadabra-note-app.herokuapp.com/api/v1/notes/${id}`, {
             method: 'GET',
             headers: {
                 ...headers,
@@ -100,7 +100,7 @@ export namespace note {
                 ...createHeaderUser(user)
             }
         });
-        return id
+        return id;
     }
 
 
@@ -109,19 +109,32 @@ export namespace note {
             ...user,
             ...note
         }
-        const formBody = createFormBody(data)
-        let rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/notes', {
-            method: 'POST',
-            headers: headers,
-            body: formBody,
+        const formBody = createFormBody(data);
+        try {
+            const rv = await fetch('https://cadabra-note-app.herokuapp.com/api/v1/notes', {
+                method: 'POST',
+                headers: headers,
+                body: formBody,
 
-        });
-        return await rv.json() as In.Note
+            });
+            const rvNote = await rv.json() as In.Note
+
+            if (rv.ok == true && 'id' in rvNote) {
+                return rvNote;
+            } else {
+                const err: ApiError = {
+                    status: rv.status,
+                    statusTextext: rv.statusText,
+                }
+                alert(err.status + ' - ' + err.statusTextext);
+            }
+        } catch (err) {
+            throw new Error(err)
+        }
     }
 
 
     export async function update(user: In.User, note: Partial<Out.Note> & { id: string }) {
-        console.log(note)
         const formBody = createFormBody(note)
         await fetch(`https://cadabra-note-app.herokuapp.com/api/v1/notes/${note.id}`, {
             method: 'PATCH',
@@ -134,4 +147,9 @@ export namespace note {
         });
         return await getById(user, note.id)
     }
+}
+
+interface ApiError {
+    status: number,
+    statusTextext: string
 }

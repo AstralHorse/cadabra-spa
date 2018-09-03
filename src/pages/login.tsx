@@ -28,7 +28,7 @@ export class Login extends React.Component<{
     }
 
     render() {
-        if(app.state.user()){
+        if(app.state.user() && app.state.user().id){
             history.push(app.routes.main)
             return <div/>;
         } else
@@ -56,9 +56,11 @@ export class Login extends React.Component<{
                         <button className={'base-label-pointing active'}
                             onClick={async () => {
                                 const user = await api.signIn({ email: this.state.email, password: this.state.password });
-                                localStorage.setItem('user', JSON.stringify(user));
-                                app.state.set('user', user);
-                                history.push(app.routes.main);
+                                if (user.id){
+                                    localStorage.setItem('user', JSON.stringify(user));
+                                    app.state.set('user', user);
+                                    history.push(app.routes.main);
+                                }
                             }}>
                             Sign In
                         </button>

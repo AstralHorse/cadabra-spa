@@ -24,17 +24,20 @@ export class Main extends React.Component<{
     async componentWillMount() {
         if (app.state.user()) {
             const notes = await api.note.getAll(app.state.user())
-            console.log(notes)
+            console.log(await api.note.getAll(app.state.user(), {page: 1}))
+            console.log(await api.note.getAll(app.state.user(), {per_page: 11}))
+            console.log(await api.note.getAll(app.state.user(), {per_page: 15}))
+            // console.log(notes)
             this.setState({ notes: notes })
         }
     }
     onSort = function(sortedList: any) {
-    	console.log("sortedList", sortedList);
+        console.log("sortedList", sortedList);
     }
 
     render() {
         const list = [] as any;
-        if (!app.state.user()) {
+        if (!app.state.user() || !app.state.user().id) {
             history.push(app.routes.login)
             return <div />;
         } else
@@ -67,7 +70,12 @@ export class Main extends React.Component<{
                                 await api.note.update(app.state.user(), this.state.note)
                             } else {
                                 if (!this.state.note.title) return;
-                                await api.note.create(app.state.user(), this.state.note)
+                                const rv = await api.note.create(app.state.user(), this.state.note)
+                                if (rv && 'id' in rv) {
+                                    alert(rv.title + ' note created');
+                                }
+
+
                             }
                             this.setState({ notes: await api.note.getAll(app.state.user()) })
                         }}
@@ -83,7 +91,8 @@ export class Main extends React.Component<{
                                 this.state.notes.length ?
                                     (this.state.notes.map((note, i) => {
 
-                                            list.push({content: <div className={`nav_note
+                                        list.push({
+                                            content: <div className={`nav_note
                                             ${note.archived ? 'archived' : ''}
                                             ${note.id === this.state.note.id ? 'active' : ''}`}
                                                 key={i} onClick={() => {
@@ -100,9 +109,10 @@ export class Main extends React.Component<{
                                                 <span className={'date'}>
                                                     {note.due_date ? moment(note.due_date).format('L') : ''}
                                                 </span>
-                                            </div>})
+                                            </div>
+                                        })
 
-                                    }) && <DragSortableList items={list} moveTransitionDuration={0.3} onSort={this.onSort} type="vertical"/>)
+                                    }) && <DragSortableList items={list} moveTransitionDuration={0.3} onSort={this.onSort} type="vertical" />)
                                     : <div className={'nav_note'} onClick={() => {
                                         this.setState({
                                             note: {

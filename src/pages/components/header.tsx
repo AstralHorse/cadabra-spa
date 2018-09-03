@@ -17,7 +17,7 @@ export class Header extends React.Component<{
     }
 
     render() {
-        if (!app.state.user()) {
+        if (!app.state.user() || !app.state.user().id) {
             return (
                 <div className={'header'}>
                     <h1>{this.props.title}</h1>
